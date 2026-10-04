@@ -12,6 +12,8 @@ I worked on the logic around an outbound Leaping agent for rejected or declined 
 
 The public repository is a sanitized case-study reconstruction based on the real Leaping workflow. It does not contain the original workflow export, prompts, endpoints, credentials, customer records, transcripts, or company identifiers.
 
+For the second pass, I audited 13 relevant outbound Leaping JSON/config exports across local Downloads and project folders. The sanitized evidence summary is in [docs/evidence-audit.md](docs/evidence-audit.md).
+
 ## How The System Works
 
 ![Architecture diagram](docs/images/outbound-case-routing.svg)
@@ -57,6 +59,10 @@ I worked on the route structure and status/fallback actions so interest, unclear
 ### Evidence
 
 The sanitized Leaping topology above shows the branching and switch structure; the function inventory shows which paths could trigger external actions or fallback review.
+
+### Additional Evidence
+
+The evidence audit shows progression from earlier outbound versions with 13-20 fields and 3-4 functions into later versions with 42-46 fields, switch routing, additional functions, and explicit ticket/email paths. That progression supports the public positioning: this was outbound decision/action reliability work, not a simple “chatbot.”
 
 ## Example
 
