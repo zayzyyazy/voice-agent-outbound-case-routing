@@ -1,0 +1,13 @@
+{
+  "route": "repair_rejected_case",
+  "action": "update_case_state",
+  "actionResult": {
+    "ok": true,
+    "externalReference": "ACTION-EXAMPLE-9001"
+  },
+  "finalState": {
+    "status": "ready_for_resubmission",
+    "usecaseSuccessful": true,
+    "auditNote": "Action completed after explicit caller confirmation."
+  }
+}

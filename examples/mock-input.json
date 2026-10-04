@@ -1,0 +1,8 @@
+{
+  "caseId": "CASE-EXAMPLE-1042",
+  "callerName": "Alex Example",
+  "phone": "PHONE-EXAMPLE",
+  "rejectionReason": "missing_signature",
+  "conversationOutcome": "corrected_by_customer",
+  "customerConfirmedAction": true
+}

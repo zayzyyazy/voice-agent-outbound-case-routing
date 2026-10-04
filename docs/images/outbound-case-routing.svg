@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+  <title id="title">Outbound case routing architecture</title>
+  <desc id="desc">A sanitized diagram of an outbound voice agent routing declined cases into status updates, review tasks, or safe closure.</desc>
+  <rect width="1200" height="720" fill="#f7f8fb"/>
+  <style>
+    .box{fill:#fff;stroke:#25324d;stroke-width:2;rx:8}
+    .decision{fill:#fff7e6;stroke:#9a6500;stroke-width:2}
+    .action{fill:#eaf7f0;stroke:#247348;stroke-width:2;rx:8}
+    .fail{fill:#fff0f0;stroke:#9a2b2b;stroke-width:2;rx:8}
+    .text{font-family:Arial,sans-serif;font-size:22px;fill:#172033}
+    .small{font-size:17px;fill:#45516b}
+    .arrow{stroke:#526079;stroke-width:3;fill:none;marker-end:url(#arrow)}
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#526079"/>
+    </marker>
+  </defs>
+  <text x="60" y="64" class="text" font-size="32" font-weight="700">Outbound Decision / Case Routing Agent</text>
+  <rect x="60" y="120" width="220" height="96" class="box"/>
+  <text x="88" y="158" class="text">Lead input</text>
+  <text x="88" y="188" class="small">safe case context</text>
+  <path d="M280 168 H370" class="arrow"/>
+  <rect x="370" y="120" width="230" height="96" class="box"/>
+  <text x="398" y="158" class="text">Voice call</text>
+  <text x="398" y="188" class="small">intent + eligibility</text>
+  <path d="M600 168 H690" class="arrow"/>
+  <polygon points="760,108 880,168 760,228 640,168" class="decision"/>
+  <text x="700" y="162" class="text">Route by</text>
+  <text x="694" y="190" class="small">outcome + reason</text>
+  <path d="M880 168 H980" class="arrow"/>
+  <rect x="980" y="120" width="170" height="96" class="action"/>
+  <text x="1005" y="158" class="text">CRM action</text>
+  <text x="1005" y="188" class="small">if allowed</text>
+  <path d="M760 228 V322" class="arrow"/>
+  <rect x="640" y="322" width="240" height="96" class="fail"/>
+  <text x="672" y="360" class="text">Review task</text>
+  <text x="672" y="390" class="small">unclear or failed action</text>
+  <path d="M1065 216 V322" class="arrow"/>
+  <rect x="945" y="322" width="240" height="96" class="box"/>
+  <text x="980" y="360" class="text">Result gate</text>
+  <text x="980" y="390" class="small">success only after proof</text>
+  <path d="M370 216 L280 322" class="arrow"/>
+  <rect x="60" y="322" width="220" height="96" class="box"/>
+  <text x="90" y="360" class="text">Safe close</text>
+  <text x="90" y="390" class="small">wrong person / refusal</text>
+</svg>
