@@ -1,16 +1,16 @@
 # Voice Agent Outbound Case Routing
 
-An outbound voice-agent case study showing how a declined-case call is routed into reliable state updates, follow-up tasks, or safe closure.
+An outbound Leaping voice-agent case study showing how a declined-case call is routed into reliable state updates, follow-up tasks, or safe closure.
 
 ## The Problem
 
-The hard part of this system was not making an LLM speak. The hard part was making sure a conversational outcome mapped to a real operational action: update a customer/case state only after the caller confirmed the right path, create a human-review task when automation could not safely finish, and stop cleanly when the call reached a wrong person, voicemail, or a clear refusal.
+The hard part of this system was not making an LLM speak. The hard part was making sure a conversational outcome inside Leaping mapped to a real operational action: update a customer/case state only after the caller confirmed the right path, create a human-review task when automation could not safely finish, and stop cleanly when the call reached a wrong person, voicemail, callback request, or clear refusal.
 
 ## What I Worked On
 
-I worked on the workflow logic around an outbound agent for rejected or declined cases: fields, branch routing, reason capture, deterministic function stages, follow-up flags, status updates, ticket/email fallback behavior, and edge cases such as wrong number, later callback, unknown rejection reason, and technical action failure.
+I worked on the logic around an outbound Leaping agent for rejected or declined cases: prompts, fields, branch routing, reason capture, switch/junction behavior, deterministic function stages, follow-up flags, status updates, ticket/email fallback behavior, JSON/data handling, and edge cases such as wrong number, later callback, unknown rejection reason, and technical action failure.
 
-The public repository is a reconstruction. It does not contain the original workflow export, prompts, endpoints, credentials, customer records, transcripts, or company identifiers.
+The public repository is a sanitized case-study reconstruction based on the real Leaping workflow. It does not contain the original workflow export, prompts, endpoints, credentials, customer records, transcripts, or company identifiers.
 
 ## How The System Works
 
@@ -22,6 +22,16 @@ The public repository is a reconstruction. It does not contain the original work
 4. A deterministic action layer performs the state update or creates a review task.
 5. The call is only marked successful after the action result is known.
 
+## Leaping Evidence
+
+![Sanitized Leaping export topology](docs/images/leaping-outbound-topology.png)
+
+This export-derived evidence shows the actual Leaping stage structure after sanitization: an opening interest branch, no-interest and wrong-number exits, later-callback handling, rejection-reason branches, a switch stage, field setters, and fallback paths. It is rendered from the real Leaping JSON export rather than recreated from memory; original prompts, IDs, endpoints and customer data are omitted.
+
+![Sanitized Leaping function inventory](docs/images/leaping-outbound-functions.png)
+
+The function inventory shows the operational layer behind the conversation: a time helper, status update action, outbound ticket/fallback email paths, and an API-backed notification/action stage. Endpoint URLs and headers are intentionally hidden.
+
 ## Key Engineering Problems
 
 - Separating caller intent from system action so the agent cannot promise completion before a function succeeds.
@@ -29,6 +39,24 @@ The public repository is a reconstruction. It does not contain the original work
 - Routing similar-sounding rejection reasons into different operational paths.
 - Creating fallback review tasks when automated updates fail or the reason is unclear.
 - Handling non-conversation outcomes such as voicemail and wrong-number calls.
+
+## Real Debugging Examples
+
+### Problem
+
+The caller could express interest, uncertainty, a callback request, a wrong-number state, or a hard refusal in a single outbound flow.
+
+### Why It Happened
+
+The Leaping agent needed explicit transitions and field setters so the LLM did not collapse those outcomes into one generic “follow up later” path.
+
+### What I Changed
+
+I worked on the route structure and status/fallback actions so interest, unclear rejection reasons, later callback, wrong number, and technical failure paths stayed separate.
+
+### Evidence
+
+The sanitized Leaping topology above shows the branching and switch structure; the function inventory shows which paths could trigger external actions or fallback review.
 
 ## Example
 
@@ -71,9 +99,10 @@ The reconstructed test cases cover successful repair, unclear reason, caller ref
 
 ## Stack
 
-- Voice-agent workflow with staged dialogue, switch routing, field setters, and deterministic function nodes
+- Leaping voice-agent workflow with dialogue, switch, junction, scripted, field-setter, and deterministic function stages
 - JSON state and structured outputs
-- CRM/action integration represented with sanitized placeholders
+- API/CRM action integrations represented with sanitized placeholders
+- Prompt, routing, field mapping, and failure-recovery work around the voice model
 - Node.js tests for the public routing reconstruction
 
 ## What This Demonstrates
