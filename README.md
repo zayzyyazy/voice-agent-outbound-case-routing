@@ -27,6 +27,10 @@ The Leaping workflow had to handle interest, refusal, call-later, wrong number, 
 
 ## Evidence Included
 
+![Redacted real Leaping workflow](docs/images/real-leaping-workflow-redacted.png)
+
+Real Leaping Studio workflow screenshot, cropped and redacted for public use. It shows the outbound decision graph: interest/refusal paths, rejection-reason switch, field setters, action/fallback functions, callback handling, and success gating. Prompt text and identifying product/company wording are removed.
+
 ![Sanitized Leaping export topology](docs/images/leaping-outbound-topology.png)
 
 Export-derived topology from real Leaping JSON: opening branch, rejection-reason routing, switch logic, field setters, callback/wrong-number exits, action stage, and fallback paths.
@@ -38,6 +42,7 @@ Sanitized function inventory showing time helper, status/action update, outbound
 More detail:
 
 - [Implementation notes](docs/implementation-notes.md)
+- [Upwork portfolio caption](docs/upwork-portfolio.md)
 - [Evidence audit](docs/evidence-audit.md)
 - [Flow notes](docs/flow.md)
 
