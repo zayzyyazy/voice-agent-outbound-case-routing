@@ -11,6 +11,14 @@ This repository is a public-safe reconstruction of outbound Leaping work. The or
 - Added safer exits for voicemail, wrong person, hard refusal, and callback cases.
 - Tested edge cases where a caller says something conversationally valid but the system should not write a final status.
 
+## Job Context
+
+This outbound workflow was built as a new reactivation/action system, not as a small prompt variant. The work included CSV-first pilot logic, customer/case mapping, rejection-reason investigation, current-interest routing, call-later outcomes, wrong-number/no-answer handling, cancellation confirmation, follow-up-required state, ticket fallback, and action-proof rules.
+
+One important design distinction was separating the historical rejection reason from the caller's current intent. A customer could have an old rejection reason and still be interested now; the workflow needed to ask and route from the current call rather than blindly replaying historical status.
+
+The outbound development history also showed a product lesson: too many prompt constraints made the agent formal, repetitive, and questionnaire-like. The better version recovered a lighter flow and then reintroduced individual safety protections. That became part of the engineering rule for voice agents: do not keep adding prompt until the agent becomes unusable; use routing, state, and deterministic functions for control.
+
 ## How The Leaping Flow Works
 
 1. **Prepared call context enters Leaping**
@@ -62,4 +70,3 @@ All real endpoints, headers, tokens, customer identifiers, and original field na
 | Status update integration | Placeholder `update_case_state` action |
 | Ticket/email fallback | Placeholder `create_review_task` behavior |
 | Call outcomes | Unit tests for refusal, callback, wrong person, unclear reason, and action failure |
-
