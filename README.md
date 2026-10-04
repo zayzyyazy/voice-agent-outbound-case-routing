@@ -12,7 +12,7 @@ I worked on the logic around an outbound Leaping agent for rejected or declined 
 
 The public repository is a sanitized case-study reconstruction based on the real Leaping workflow. It does not contain the original workflow export, prompts, endpoints, credentials, customer records, transcripts, or company identifiers.
 
-For the second pass, I audited 13 relevant outbound Leaping JSON/config exports across local Downloads and project folders. The sanitized evidence summary is in [docs/evidence-audit.md](docs/evidence-audit.md).
+For the second pass, I audited 13 relevant outbound Leaping JSON/config exports across local Downloads and project folders. The sanitized evidence summary is in [docs/evidence-audit.md](docs/evidence-audit.md), and the deeper engineering breakdown is in [docs/implementation-notes.md](docs/implementation-notes.md).
 
 ## How The System Works
 
